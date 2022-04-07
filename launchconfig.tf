@@ -21,10 +21,11 @@ data "aws_ami" "latest-amazon-ami" {
 
 # Launch Configuration
 resource "aws_launch_configuration" "laucnh_configuration" {
-  name            = "Launch_Configuration"
-  image_id        = data.aws_ami.latest-amazon-ami.id
-  instance_type   = "t2.micro"
-  key_name        = "test"
-  security_groups = [aws_security_group.checkpoint-lt-sg.id]
-  user_data       = file("userdata.sh")
+  name          = "Launch_Configuration"
+  image_id      = data.aws_ami.latest-amazon-ami.id
+  instance_type = "t2.micro"
+  #key_name             = "test"
+  security_groups      = [aws_security_group.checkpoint-lt-sg.id]
+  iam_instance_profile = "ec2-role-for-codedeploy"
+  user_data            = file("userdata.sh")
 }

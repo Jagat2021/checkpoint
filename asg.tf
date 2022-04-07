@@ -11,6 +11,5 @@ resource "aws_autoscaling_group" "checkpoint-asg" {
   launch_configuration = aws_launch_configuration.laucnh_configuration.name
 
 
-
 }
 

@@ -31,11 +31,12 @@ resource "aws_security_group" "checkpoint-lt-sg" {
   vpc_id      = aws_vpc.checkpoint-vpc.id
 
   ingress {
-    description     = "Allow All Traffic"
+    description     = "Allow http Traffic"
     from_port       = 80
     to_port         = 80
     protocol        = "tcp"
     security_groups = [aws_security_group.checkpoint-alb-sg.id]
+    #cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
